@@ -1,0 +1,62 @@
+
+<html>
+<head>
+    <title>Simple Calendar Generator</title>
+</head>
+<body>
+
+    <h1>Simple Calendar Generator</h1>
+    <label for="yearInput">Enter Year: </label>
+    <input type="number" id="yearInput" placeholder="e.g. 2024">
+    <button onclick="generateCalendar()">Generate Calendar</button>
+
+    <div id="calendar"></div>
+
+    <script>
+        function generateCalendar() 
+        {
+            const year = parseInt(document.getElementById("yearInput").value);
+            const calendarDiv = document.getElementById("calendar");
+            calendarDiv.innerHTML = ""; // Clear previous calendar
+
+            if (isNaN(year) || year < 1000 || year > 9999) {
+                alert("Please enter a valid year.");
+                return;
+            }
+
+           
+            for (let month = 0; month < 12; month++) 
+            {
+                const monthName = new Date(year, month).toLocaleString('default', { month: 'long' });
+                const firstDay = new Date(year, month).getDay(); 
+                const numDays = new Date(year, month + 1, 0).getDate(); 
+                let monthDiv = `<h3>${monthName} ${year}</h3>`;
+                monthDiv += "<table border='1'><tr>";
+
+               
+                const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+                daysOfWeek.forEach(day => monthDiv += `<th>${day}</th>`);
+                monthDiv += "</tr><tr>";
+
+                
+                for (let i = 0; i < firstDay; i++) {
+                    monthDiv += "<td></td>";
+                }
+
+              
+                for (let day = 1; day <= numDays; day++) {
+                    monthDiv += `<td>${day}</td>`;
+                    if ((day + firstDay) % 7 === 0) {
+                        monthDiv += "</tr><tr>"; // Move to next row after 7 days
+                    }
+                }
+
+                monthDiv += "</tr></table><br>";
+                calendarDiv.innerHTML += monthDiv;
+            }
+        }
+    </script>
+
+</body>
+</html>
+
