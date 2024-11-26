@@ -1,62 +1,78 @@
 
 <html>
 <head>
-    <title>Simple Calendar Generator</title>
+<title>Simple Calendar Generator</title>
+<style>
+table { 
+    border-collapse: collapse; 
+    width: 100%;
+}
+td, th { 
+    border: 1px solid black; 
+    padding: 10px; 
+    text-align: center; 
+}
+th { 
+    font-weight: bold; 
+    background-color: #f9f9f9; 
+}
+.calendar-container {
+    text-align: center;
+    margin-top: 20px;
+}
+</style>
 </head>
 <body>
+<h1>Simple Calendar Generator</h1>
+<label for="year">Enter Year:</label>
+<input type="number" id="year" placeholder="Enter year" min="1000" max="9999" />
+<button onclick="generateCalendar()">Generate Calendar</button>
+<div id="calendar" class="calendar-container"></div>
 
-    <h1>Simple Calendar Generator</h1>
-    <label for="yearInput">Enter Year: </label>
-    <input type="number" id="yearInput" placeholder="e.g. 2024">
-    <button onclick="generateCalendar()">Generate Calendar</button>
+<script>
+function generateCalendar() {
+    const year = document.getElementById('year').value;
+    if (!year || isNaN(year)) {
+        alert("Please enter a valid year.");
+        return;
+    }
 
-    <div id="calendar"></div>
+    const months = [
+        "January", "February", "March", "April", "May", "June", 
+        "July", "August", "September", "October", "November", "December"
+    ];
 
-    <script>
-        function generateCalendar() 
+    let calendarHTML = "";
+
+    for (let mon = 0; mon < 12; mon++) {
+        const d = new Date(year, mon, 1);
+        const lastday = new Date(year, mon+1, 0)getDate();
+        let table = `<strong>${months[mon]} ${year}</strong><br>`;
+        table += '<table><tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr><tr>';
+
+
+        for (let i = 0; i < d.getDay(); i++) {
+            table += '<td></td>';
+        }
+        for(let day=1;day<=lastday;day++)
         {
-            const year = parseInt(document.getElementById("yearInput").value);
-            const calendarDiv = document.getElementById("calendar");
-            calendarDiv.innerHTML = ""; // Clear previous calendar
-
-            if (isNaN(year) || year < 1000 || year > 9999) {
-                alert("Please enter a valid year.");
-                return;
-            }
-
-           
-            for (let month = 0; month < 12; month++) 
-            {
-                const monthName = new Date(year, month).toLocaleString('default', { month: 'long' });
-                const firstDay = new Date(year, month).getDay(); 
-                const numDays = new Date(year, month + 1, 0).getDate(); 
-                let monthDiv = `<h3>${monthName} ${year}</h3>`;
-                monthDiv += "<table border='1'><tr>";
-
+        table+=<td>${day}</td>
+        }
                
-                const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-                daysOfWeek.forEach(day => monthDiv += `<th>${day}</th>`);
-                monthDiv += "</tr><tr>";
-
-                
-                for (let i = 0; i < firstDay; i++) {
-                    monthDiv += "<td></td>";
-                }
-
-              
-                for (let day = 1; day <= numDays; day++) {
-                    monthDiv += `<td>${day}</td>`;
-                    if ((day + firstDay) % 7 === 0) {
-                        monthDiv += "</tr><tr>"; // Move to next row after 7 days
-                    }
-                }
-
-                monthDiv += "</tr></table><br>";
-                calendarDiv.innerHTML += monthDiv;
+        if (d.getDay() !== 0) {
+            for (let i = d.getDay(); i < 7; i++) {
+                table += '<td></td>';
             }
         }
-    </script>
 
+        table += '</tr></table><br>';
+        calendarHTML += table;
+    }
+
+    document.getElementById('calendar').innerHTML = calendarHTML;
+}
+</script>
 </body>
 </html>
+
 
