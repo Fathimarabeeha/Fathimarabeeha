@@ -1,8 +1,8 @@
 <html>
 <head>
-<body>
+<body bgcolor="Lavender">
 <h2>Form</h2>
-<form name = "form" action = " " method="post">
+<form name = "form" action = " " method="post"
       onsabmit ="return validate Form ()">
 Name:<input type="text" name="name">
 Email:<input type="text" name="mail">
@@ -30,5 +30,28 @@ alert("Enter Name !!");
 document.form.name.value();
 return false;
 }
+if(passcode==" ")
+{
+    alert("Enter the password!!");
+    retun false;
+}
+else if(passcode.legth<6)
+{
+    alert("Enter the 6 digit pswd!!");
+    retun false;
+}
 
-
+if (cpasscode==" ")
+{
+    alert("Cnform the password");
+    retun false;
+}
+else if(cpasscode !=passcode)
+{
+    alert("Password must be same");
+    retun false;
+}
+}
+</script>
+</body>
+</html>
