@@ -1,36 +1,82 @@
 <html>
 <head>
+<style>
+    h2{
+        text-align:center;
+    }
+</style>
+</head>
 <body bgcolor="Lavender">
-<h2>Form</h2>
+<h2>FORM</h2>
 <form name = "form" action = " " method="post"
       onsabmit ="return validate Form ()">
-Name:<input type="text" name="name">
-Email:<input type="text" name="mail">
-Mob No:<input type="text" name="mob">
-Username:<input type="text" name="username">
-Password:<input type="text" name="pswd">
-Conforme password:<input type="text" name="cnfmpswd">
+Name:<input type="text" name="name"><br>
+Username:<input type="text" name="username"><br>
+Email:<input type="text" name="mail"><br>
+Mob No:<input type="text" name="mob"><br>
+Password:<input type="text" name="pswd"><br>
+Conforme password:<input type="text" name="cnfmpswd"><br>
 <input type="submit" name="submit">
 <input type="reset" name="reset">
+</form>
+
 <script>
 function validateForm()
 {
 var name=document.form.name.value;
+var username=document.form.username.value;
 var email=document.form.mail.value;
 var at=email.indexof("@");
-var dot=email.indexod(".");
+var dot=email.indexof(".");
 var mob=document.form.mob.value;
-var user=document.form.user.value;
 var passcode=document.form.passcode.value;
-var cparrcode=document.form.cpasscode.value;
+var cpasscode=document.form.cpasscode.value;
 
-if(nm=="")
-{
-alert("Enter Name !!");
-document.form.name.value();
-return false;
+if(name==""){
+  alert("Enter Name !!");
+  document.form.name.value();
+  return false;
 }
-if(passcode==" ")
+
+if(mail==""){
+  alert("Enter email id");
+  document.form.mail.value();
+  return false;
+}
+else if (at<1 || dot <at+2 || dot+2>=email.length)
+
+{
+    alert("plse enter valid email address");
+    document.form.mail.value();
+    return false;
+}
+
+if(mob=="")
+{
+    alert("Enter mobile number");
+    document.form.mob.value();
+    return false;
+}
+else if(isNan(mob))
+{
+    alert("Enter valid mobile number");
+    document.form.mob.focus();
+    return false;
+}
+else if("mob.legth !=10")
+{
+    alert("Enter mobile nn with 10 digit");
+    document.form.mob.focus();
+    return false;
+}   
+if(user=="")
+{
+    alert("Enter user name");
+    document.form.user.value();
+    return false;
+}
+    
+if(passcode=="")
 {
     alert("Enter the password!!");
     retun false;
@@ -41,7 +87,7 @@ else if(passcode.legth<6)
     retun false;
 }
 
-if (cpasscode==" ")
+if (cpasscode ==" ")
 {
     alert("Cnform the password");
     retun false;
