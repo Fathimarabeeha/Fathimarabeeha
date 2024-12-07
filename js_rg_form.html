@@ -1,103 +1,138 @@
 <html>
 <head>
+<title>Registration Form</title>
 <style>
-    h2{
-        text-align:center;
-    }
-</style>
+body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+            display: block;
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .alert {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
-<body bgcolor="Lavender">
-<h2>FORM</h2>
-<form name = "form" action = " " method="post"
-      onsabmit ="return validate Form ()">
-Name:<input type="text" name="name"><br>
-Username:<input type="text" name="username"><br>
-Email:<input type="text" name="mail"><br>
-Mob No:<input type="text" name="mob"><br>
-Password:<input type="text" name="pswd"><br>
-Conforme password:<input type="text" name="cnfmpswd"><br>
-<input type="submit" name="submit">
-<input type="reset" name="reset">
+<body>
+
+<h2>Registration Form</h2>
+
+<form name="registrationForm" onsubmit="return validateForm()">
+<label for="name">Name:</label>
+<input type="text" id="name" name="name"><br><br>
+
+<label for="email">Email:</label>
+<input type="email" id="email" name="email"><br><br>
+
+<label for="mob">Mobile Number:</label>
+<input type="text" id="mob" name="mob"><br><br>
+
+<label for="username">Username:</label>
+<input type="text" id="username" name="username"><br><br>
+
+<label for="password">Password:</label>
+<input type="password" id="password" name="password"><br><br>
+
+<label for="confirmPassword">Confirm Password:</label>
+<input type="password" id="confirmPassword" name="confirmPassword"><br><br>
+
+<input type="submit" value="Register">
 </form>
 
 <script>
-function validateForm()
-{
-var name=document.form.name.value;
-var username=document.form.username.value;
-var email=document.form.mail.value;
-var at=email.indexof("@");
-var dot=email.indexof(".");
-var mob=document.form.mob.value;
-var passcode=document.form.passcode.value;
-var cpasscode=document.form.cpasscode.value;
+function validateForm() {
+var name = document.registrationForm.name.value;
+var email = document.registrationForm.email.value;
+var mob = document.registrationForm.mob.value;
+var username = document.registrationForm.username.value;
+var password = document.registrationForm.password.value;
+var confirmPassword = document.registrationForm.confirmPassword.value;
 
-if(name==""){
-  alert("Enter Name !!");
-  document.form.name.value();
-  return false;
+if (name == "") {
+alert("Name is required.");
+return false;
 }
 
-if(mail==""){
-  alert("Enter email id");
-  document.form.mail.value();
-  return false;
-}
-else if (at<1 || dot <at+2 || dot+2>=email.length)
-
-{
-    alert("plse enter valid email address");
-    document.form.mail.value();
-    return false;
+var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+if (email == "" || !emailPattern.test(email)) {
+alert("Please enter a valid email.");
+return false;
 }
 
-if(mob=="")
-{
-    alert("Enter mobile number");
-    document.form.mob.value();
-    return false;
-}
-else if(isNan(mob))
-{
-    alert("Enter valid mobile number");
-    document.form.mob.focus();
-    return false;
-}
-else if("mob.legth !=10")
-{
-    alert("Enter mobile nn with 10 digit");
-    document.form.mob.focus();
-    return false;
-}   
-if(user=="")
-{
-    alert("Enter user name");
-    document.form.user.value();
-    return false;
-}
-    
-if(passcode=="")
-{
-    alert("Enter the password!!");
-    retun false;
-}
-else if(passcode.legth<6)
-{
-    alert("Enter the 6 digit pswd!!");
-    retun false;
+var mobPattern = /^[0-9]{10}$/;
+if (mob == "" || !mobPattern.test(mob)) {
+alert("Please enter a valid 10-digit mobile number.");
+return false;
 }
 
-if (cpasscode ==" ")
-{
-    alert("Cnform the password");
-    retun false;
+if (username == "") {
+alert("Username is required.");
+return false;
 }
-else if(cpasscode !=passcode)
-{
-    alert("Password must be same");
-    retun false;
+
+if (password == "") {
+alert("Password is required.");
+return false;
 }
+
+if (confirmPassword == "") {
+alert("Confirm Password is required.");
+return false;
+}
+
+if (password !== confirmPassword) {
+alert("Passwords do not match.");
+return false;
+}
+
+return true;
 }
 </script>
+
 </body>
 </html>
+
