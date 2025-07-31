@@ -1,3 +1,124 @@
-This project is designed to make urban life more seamless and efficient. In today's cities, people rely on multiple apps for various services—one for transportation, another for bill payments, another for healthcare, and so on. The lack of integration among these services creates confusion, delays, and inconvenience for users. By bringing all essential urban functions into a single mobile platform, this project aims to simplify everyday tasks for citizens. With a user-friendly interface, easy access to services, and location-based features, the app will help people manage their urban lives more easily and effectively.
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
 
-The multifunctional mobile ecosystem also strengthens the connection between citizens, businesses, and government services. It provides real-time alerts, emergency contact information, and local news updates, all in one place. Additionally, the built-in social feed promotes interaction among residents, encouraging community participation and support. This app not only reduces digital clutter but also supports smart city goals by enabling better communication, improved public service delivery, and a stronger sense of community in urban areas.
+% Page setup
+\geometry{left=1.5in, right=1in, top=1in, bottom=1in}
+\onehalfspacing
+
+% Header and footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyfoot[C]{\thepage}
+
+% Title page setup
+\title{\textbf{AI-BASED TASK SCHEDULER}\\
+\large{A Smart Application for Automated Daily Task Planning}}
+\author{Your Name\\
+Student ID: Your ID\\
+Department of Computer Science\\
+Your University}
+\date{\today}
+
+\begin{document}
+
+% Title Page
+\maketitle
+\thispagestyle{empty}
+
+% Abstract
+\newpage
+\begin{abstract}
+In today's fast-paced world, effective time and task management has become increasingly difficult...
+% (rest of your abstract remains unchanged)
+\end{abstract}
+
+% Table of Contents
+\newpage
+\tableofcontents
+
+% List of Figures
+\newpage
+\listoffigures
+
+% List of Tables
+\newpage
+\listoftables
+
+% Chapter 1: INTRODUCTION
+\newpage
+\chapter{INTRODUCTION}
+
+% (rest of your Introduction remains unchanged)
+
+% Chapter 2: LITERATURE SURVEY
+\newpage
+\chapter{LITERATURE SURVEY}
+
+% (rest remains unchanged)
+
+% Chapter 3: SYSTEM ANALYSIS
+\newpage
+\chapter{SYSTEM ANALYSIS}
+
+% (rest remains unchanged)
+
+% Chapter 4: SYSTEM DESIGN
+\newpage
+\chapter{SYSTEM DESIGN}
+
+\section{Methodology}
+% (Scrum details remain unchanged)
+
+\section{UML Diagrams}
+
+\subsection{Use Case Diagram}
+The use case diagram illustrates the main interactions between users and the system:
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.85\textwidth]{use_case_diagram.png}
+    \caption{Use Case Diagram for AI Task Scheduler}
+    \label{fig:usecase}
+\end{figure}
+
+\subsection{Class Diagram}
+The class diagram shows the system's object-oriented structure:
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.85\textwidth]{class_diagram.png}
+    \caption{Class Diagram for AI Task Scheduler}
+    \label{fig:classdiagram}
+\end{figure}
+
+\subsection{Activity Diagram}
+The activity diagram shows the task creation and scheduling flow:
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.85\textwidth]{activity_diagram.png}
+    \caption{Activity Diagram for Task Creation Process}
+    \label{fig:activitydiagram}
+\end{figure}
+
+% (Continue with rest of report)
+% Chapter 5: USER STORIES, BACKLOG, PLAN, DATABASE, UI DESIGN, etc.
+
+\end{document}
